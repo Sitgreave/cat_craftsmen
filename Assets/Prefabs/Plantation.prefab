@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5123152941193861970}
   - component: {fileID: 5821805636776239532}
-  - component: {fileID: 3224391574347008195}
+  - component: {fileID: 2325306424583877509}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Plantation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3224391574347008195
+--- !u!114 &2325306424583877509
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,6 +93,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7087796279756102664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd8b186dcf2a73c47b79dab4adebc886, type: 3}
+  m_Script: {fileID: 11500000, guid: 716fb0f7b5dced443a2800dc1b13184f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _description: 
+  _income: 
+  _cost: 0
+  _product: {fileID: 0}
+  _interval: 0

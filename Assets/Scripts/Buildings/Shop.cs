@@ -10,11 +10,18 @@ public class Shop : MonoBehaviour
 
     Builder builder;
     public List<Button> buttons;
-    public List<Building> buildings;
-    Dictionary<Button, Building> selectBuilding;
-    [MenuItem("MyMenu/Do Something")]
-    public void SelectBuilding()
+    Dictionary<string, Building> _buildings;
+    
+
+    private void Start()
     {
-        
+      
     }
+
+    public void PlantationSelect()
+    {
+        builder.SelectBuilding(_buildings["Ferm"]);
+    }
+
+
 }

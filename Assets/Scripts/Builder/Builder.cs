@@ -12,8 +12,8 @@ public class Builder : MonoBehaviour
         Instantiate(building);
     }
 
-    public void SelectBuilding()
+    public void SelectBuilding(Building building)
     {
-
+        _building = building;
     }
 }
