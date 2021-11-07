@@ -12,15 +12,15 @@ public class ProductionBuilding : Building
     }
     void StartProductCreating() 
     {
-        StartCoroutine(Creating(_interval));
+        StartCoroutine(nameof(Creating));
     }
 
-    IEnumerator Creating(float interval)
+    IEnumerator Creating()
     {
         while (true)
         {
             Instantiate(_product);
-            yield return new WaitForSeconds(interval);
+            yield return new WaitForSeconds(_interval);
         }
     }
 }
