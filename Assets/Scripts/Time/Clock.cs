@@ -1,6 +1,8 @@
+
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+
 using UnityEngine.UI;
 
 public class Clock : MonoBehaviour
@@ -8,11 +10,36 @@ public class Clock : MonoBehaviour
     [SerializeField] Image _clockFace;
     [SerializeField] int _secondsOnCycle;
     private const int _countCicle = 4;
-    private int _currentCycle;
+    private static int _currentCycle;
+
+    public static Clock instance = null;
+    public delegate void OnCycleChanged();
+    public static event OnCycleChanged CycleChanged;
+    
 
     private void Start()
     {
-        StartCoroutine(nameof(PassageOfTime));
+        if (instance == null)
+        {
+            instance = this;
+            StartCoroutine(nameof(PassageOfTime));
+        }
+        else if (instance == this)
+        {
+            Destroy(gameObject);
+
+        }
+    }
+
+    private void DelegateAssign()
+    {
+        switch (_currentCycle)
+        {
+            case (int)DayCycle.morning:
+                
+                    break;
+                
+        }
     }
     private void ShowTime()
     {
@@ -25,12 +52,13 @@ public class Clock : MonoBehaviour
         {
             if (_currentCycle < _countCicle) _currentCycle++;
             else _currentCycle = 1;
+          if(CycleChanged != null) CycleChanged();
             ShowTime();
             yield return new WaitForSecondsRealtime(_secondsOnCycle);
         }
     }
      
-    enum DayCycle
+   public enum DayCycle
     {
         morning = 1,
         day = 2,
@@ -38,7 +66,7 @@ public class Clock : MonoBehaviour
         night = 4
     }
 
-    public int CurrentCycle()
+    public static int CurrentCycle()
     {
         return _currentCycle;
     }

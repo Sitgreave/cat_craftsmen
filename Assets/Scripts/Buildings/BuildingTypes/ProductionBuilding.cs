@@ -5,22 +5,21 @@ public class ProductionBuilding : Building
 {
     [SerializeField] private Product _product;
     [SerializeField] private int _interval;
+    [SerializeField] Clock.DayCycle _productingCycle;
     
-    private void Start()
+    private void OnEnable()
     {
-        StartProductCreating();
-    }
-    void StartProductCreating() 
-    {
-        StartCoroutine(nameof(Creating));
+        Clock.CycleChanged += Creating;
     }
 
-    IEnumerator Creating()
+    private void OnDisable()
     {
-        while (true)
-        {
-            Instantiate(_product);
-            yield return new WaitForSeconds(_interval);
-        }
+        Clock.CycleChanged -= Creating;
+    }
+
+
+    private void Creating()
+    {
+        Instantiate(_product);
     }
 }
